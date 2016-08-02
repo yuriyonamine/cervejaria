@@ -54,6 +54,4 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		return resolver;
 	}
 	
-		
-
 }
