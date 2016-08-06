@@ -30,5 +30,5 @@ public class BeerController {
 		redirectAttributes.addFlashAttribute("message", "Registered");
 		return "redirect:/beers/new";
 
-	}
+	}	
 }
