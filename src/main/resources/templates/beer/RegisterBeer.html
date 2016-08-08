@@ -41,9 +41,17 @@
 					<div class="row">
 						<div class="col-sm-3 form-group">
 							<label for="style">Style</label>
-							<select id="style" class="form-control">
-								<option value="">Select Style</option>
-							</select>
+							<div class="bw-field-action">
+								<select id="style" class="form-control">
+									<option value="">Select Style</option>
+								</select>
+								
+								<div class="bw-field-action-icon">
+									<a href="#" data-toggle="modal" data-target="#styleRegisterModal">
+										<i class="glyphicon glyphicon-plus-sign bw-glyphicon-large"></i>
+									</a>
+								</div>
+							</div>
 						</div>
 				
 						<div class="col-sm-3 form-group">
@@ -107,7 +115,7 @@
 	
 				</form>
 			</div>
-	
+			<div th:replace="style/RegisterBeerStyle"></div>
 		</section>		
 	</body>
 </html>
