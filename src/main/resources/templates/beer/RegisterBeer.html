@@ -2,7 +2,7 @@
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="'layout/DefaultLayout'">
+	layout:decorate="~{layout/DefaultLayout}">
 	<head><title>Register Beer</title></head>
 	<body>
 		<section class="aw-layout-content  js-content" layout:fragment="mainContent">
@@ -115,7 +115,7 @@
 	
 				</form>
 			</div>
-			<div th:replace="style/RegisterBeerStyle"></div>
+			<div th:replace="style/FastRegisterBeerStyle"></div>
 		</section>		
 	</body>
 </html>

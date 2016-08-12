@@ -2,6 +2,8 @@ package br.com.yuri.cerveja.controller;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,15 +14,19 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.yuri.cerveja.model.Beer;
 
 @Controller
+@RequestMapping("/beers")
 public class BeerController {
 
-	@RequestMapping("/beers/new")
+	private static final Logger logger = LoggerFactory.getLogger(BeerController.class);
+	@RequestMapping("/new")
 	public String newBeer(Beer beer, Model model) {
+		logger.error("Erro!!!!!!");
+		logger.info("Informacao!!!!");
 		model.addAttribute("beer", new Beer());
 		return "beer/RegisterBeer";
 	}
 
-	@RequestMapping(value = "/beers/new", method = RequestMethod.POST)
+	@RequestMapping(value = "/new", method = RequestMethod.POST)
 	public String registerBeer(@Valid Beer beer, BindingResult result, Model model, RedirectAttributes redirectAttributes) {
 		if (result.hasErrors()){
 			model.addAttribute("beer", beer);
