@@ -8,10 +8,16 @@ public enum Flavour {
 	SMOKE("Smoke"),
 	FRUIT_SPICE("Fruit and Spice");
 	
-	private String flavour;
+	private String description;
 
 	private Flavour(String flavour){
-		this.flavour=flavour;
+		this.description=flavour;
 	}
+
+	public String getDescription() {
+		return description;
+	}
+	
+	
 	
 }

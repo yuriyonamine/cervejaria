@@ -41,6 +41,7 @@ public class Beer {
 	
 	private BigDecimal comission;
 	
+	@Column(name="stock_quantity")
 	private Integer stockQuantity;
 
 	@Enumerated(EnumType.STRING)
