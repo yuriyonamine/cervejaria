@@ -1,5 +1,8 @@
 package br.com.yuri.cerveja.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 public class Client {
 	private String name;
 	private TipoPessoa personType;
