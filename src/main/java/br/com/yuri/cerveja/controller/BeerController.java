@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,7 +32,6 @@ public class BeerController {
 	@RequestMapping("/new")
 	public ModelAndView newBeer(Beer beer) {
 		ModelAndView mav = new ModelAndView("beer/RegisterBeer");
-		mav.addObject("beer", new Beer());
 		mav.addObject("flavours", Flavour.values());
 		mav.addObject("styles", styles.findAll());
 		mav.addObject("origins", Origin.values());
@@ -39,7 +39,7 @@ public class BeerController {
 	}
 
 	@RequestMapping(value = "/new", method = RequestMethod.POST)
-	public ModelAndView registerBeer(@Valid Beer beer, BindingResult result, RedirectAttributes redirectAttributes) {
+	public ModelAndView registerBeer(@Valid Beer beer, BindingResult result, Model model, RedirectAttributes redirectAttributes) {
 		if (result.hasErrors()){
 			return newBeer(beer);
 		}
