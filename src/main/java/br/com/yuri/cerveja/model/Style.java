@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name="style")
@@ -19,6 +22,8 @@ public class Style implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotBlank(message="Name is required")
+	@Size(max=15, message="Name must be less than 15 characters")
 	private String name;
 	
 	@OneToMany(mappedBy="style")	

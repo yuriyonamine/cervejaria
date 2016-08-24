@@ -17,12 +17,16 @@
 				</h1>
 			</div>
 		</div>
+		
+		
 		<div class="container-fluid">
-			<form method="get" class="form-vertical  js-form-loading">
+			<th:block th:replace="fragments/SuccessMessage :: success"></th:block>
+			<form method="POST" th:object="${style}" class="form-vertical  js-form-loading">
+				<th:block th:replace="fragments/ValidationErrorMessage :: validationError"></th:block>
 				<div class="row">
-					<div class="col-sm-12 form-group">
-						<label for="styleName">Name</label>
-						<input type="text" id="styleName" class="form-control">
+					<div class="col-sm-12 form-group" th:classappend="${#fields.hasErrors('name')} ? has-error">
+						<label for="name" class="control-label">Name</label>
+						<input type="text" id="name" class="form-control" th:field="*{name}">
 					</div>
 				</div>
 				<div class="form-group">

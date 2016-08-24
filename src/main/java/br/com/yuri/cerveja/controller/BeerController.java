@@ -23,12 +23,13 @@ import br.com.yuri.cerveja.service.RegisterBeerService;
 @RequestMapping("/beers")
 public class BeerController {
 	@Autowired
-	private Styles styles; 
-	
+	private Styles styles;
+
 	@Autowired
 	private RegisterBeerService registerBeerService;
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(BeerController.class);
+
 	@RequestMapping("/new")
 	public ModelAndView newBeer(Beer beer) {
 		ModelAndView mav = new ModelAndView("beer/RegisterBeer");
@@ -39,15 +40,16 @@ public class BeerController {
 	}
 
 	@RequestMapping(value = "/new", method = RequestMethod.POST)
-	public ModelAndView registerBeer(@Valid Beer beer, BindingResult result, Model model, RedirectAttributes redirectAttributes) {
-		if (result.hasErrors()){
+	public ModelAndView registerBeer(@Valid Beer beer, BindingResult result, Model model,
+			RedirectAttributes redirectAttributes) {
+		if (result.hasErrors()) {
 			return newBeer(beer);
 		}
-		
+
 		registerBeerService.save(beer);
 
 		redirectAttributes.addFlashAttribute("message", "Registered");
 		return new ModelAndView("redirect:/beers/new");
 
-	}	
+	}
 }
