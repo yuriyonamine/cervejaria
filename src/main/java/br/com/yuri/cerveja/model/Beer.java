@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
@@ -73,6 +75,12 @@ public class Beer {
 	@JoinColumn(name = "style_id")
 	private Style style;
 
+	@PrePersist
+	@PreUpdate
+	private void prePersistUpdate(){
+		this.sku = this.sku.toUpperCase();
+	}
+	
 	public String getSku() {
 		return sku;
 	}
