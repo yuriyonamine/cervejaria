@@ -50,16 +50,11 @@ public class StyleController {
 
 	@RequestMapping(method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public @ResponseBody ResponseEntity<?> salvar(@RequestBody @Valid Style style, BindingResult result) {
-		if(result.hasErrors()){
+		if (result.hasErrors()) {
 			return ResponseEntity.badRequest().body(result.getFieldError("name").getDefaultMessage());
 		}
-		
-		try{
-			registerStyleService.saveStyle(style);
-		}catch(RegisterStyleNameException ex){
-			return ResponseEntity.badRequest().body(ex.getMessage());
-		}
-		
+
+		registerStyleService.saveStyle(style);
 		return ResponseEntity.ok(style);
 	}
 }
