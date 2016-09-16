@@ -14,7 +14,7 @@ public class ClassForErrorAttributeTagProcessor extends AbstractAttributeTagProc
 	private static final int PRECEDENCE = 1000;
 
 	public ClassForErrorAttributeTagProcessor(String dialectPrefix) {
-		super(TemplateMode.HTML, dialectPrefix, null, false, ATTRIBUTE_NAME, true, PRECEDENCE,true);
+		super(TemplateMode.HTML, dialectPrefix, null, false, ATTRIBUTE_NAME, true, PRECEDENCE, true);
 
 	}
 
@@ -22,10 +22,10 @@ public class ClassForErrorAttributeTagProcessor extends AbstractAttributeTagProc
 	protected void doProcess(ITemplateContext context, IProcessableElementTag tag, AttributeName attributeName,
 			String attributeValue, IElementTagStructureHandler structureHandler) {
 		boolean hasErrors = FieldUtils.hasErrors(context, attributeValue);
-		
-		if(hasErrors){
+
+		if (hasErrors) {
 			String classes = tag.getAttributeValue("class");
-			structureHandler.setAttribute("class", classes+"has-error");
+			structureHandler.setAttribute("class", classes + " has-error");
 		}
 	}
 }
