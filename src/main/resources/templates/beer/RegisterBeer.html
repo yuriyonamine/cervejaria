@@ -5,7 +5,8 @@
 	layout:decorate="~{layout/DefaultLayout}"
 	xmlns:brewer="http://www.breweryuri.com.br">
 <head>
-<title>Register Beer</title>
+	<title>Register Beer</title>
+	<link rel="stylesheet" th:href="@{/stylesheets/vendors/upload.min.css}"/>
 </head>
 <body>
 	<section class="aw-layout-content  js-content"
@@ -106,6 +107,18 @@
 						<input id="stockQuantity" type="text" class="form-control js-plain" th:field="*{stockQuantity}"/>
 					</div>
 				</div>
+				
+				<div class="row">
+					<div class="cols-sm-12 form-group">
+						<label class="control-label">Photo</label>
+						
+						<div id="upload-drop" class="bw-upload">
+							<i class="glyphicon glyphicon-cloud-upload"></i>
+							<span>Drag the photo here</span>
+							<a class="bw-upload-form-file">Select <input id="upload-select" type="file" accept=".jpg,.jpeg,.png"/></a>
+						</div>
+					</div>
+				</div>
 
 				<div class="form-group">
 					<button class="btn  btn-primary" type="submit">Save</button>
@@ -118,9 +131,24 @@
 		</div>
 		<div th:replace="style/FastRegisterBeerStyle :: modal"></div>
 	</section>
-	
+
 	<th:block layout:fragment="javascript-extra">
 		<script th:src="@{/javascripts/style.fast-register.js}"></script>
+		<script th:src="@{/javascripts/vendors/uikit.min.js}"></script>
+		<script th:src="@{/javascripts/vendors/upload.min.js}"></script>
+		<script>
+			$(function(){
+				var settings = {
+						type: 'json',
+						filelimit: 1,
+						allow: '*.(jpg|jpeg|png)',
+						action: '/cervejaria/photos'
+				};
+				
+				UIkit.uploadSelect($('#upload-select'), settings);
+				UIkit.uploadDrop($('#upload-drop'),settings);
+			});
+		</script>
 	</th:block>
 </body>
 </html>
