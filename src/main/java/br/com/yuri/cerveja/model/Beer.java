@@ -57,7 +57,7 @@ public class Beer {
 	@DecimalMax(value = "100.0", message = "The comission must be less than 100")
 	private BigDecimal comission;
 
-	@NotNull(message="Stock quantity is required")
+	@NotNull(message = "Stock quantity is required")
 	@Max(value = 9999, message = "The price must be less than 9.999")
 	@Column(name = "stock_quantity")
 	private Integer stockQuantity;
@@ -75,12 +75,18 @@ public class Beer {
 	@JoinColumn(name = "style_id")
 	private Style style;
 
+	@Column(name = "photo_name")
+	private String photoName;
+
+	@Column(name = "content_type")
+	private String contentType;
+
 	@PrePersist
 	@PreUpdate
-	private void prePersistUpdate(){
+	private void prePersistUpdate() {
 		this.sku = this.sku.toUpperCase();
 	}
-	
+
 	public String getSku() {
 		return sku;
 	}
@@ -167,6 +173,22 @@ public class Beer {
 
 	public void setPrice(BigDecimal price) {
 		this.price = price;
+	}
+
+	public String getPhotoName() {
+		return photoName;
+	}
+
+	public void setPhotoName(String photoName) {
+		this.photoName = photoName;
+	}
+
+	public String getContentType() {
+		return contentType;
+	}
+
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
 	}
 
 	@Override
