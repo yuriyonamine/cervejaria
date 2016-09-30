@@ -8,7 +8,7 @@
 	</Appenders>
 	
 	<Loggers>
-		<Logger name="br.com.yuri.cerveja.controller" level="error"/>
+		<Logger name="br.com.yuri.cerveja" level="debug"/>
 		<Logger name="org.hibernate.SQL" level="debug"/>
 	
 		<Root level="info">
