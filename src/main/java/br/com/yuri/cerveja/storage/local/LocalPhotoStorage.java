@@ -1,9 +1,11 @@
 package br.com.yuri.cerveja.storage.local;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,9 +41,33 @@ public class LocalPhotoStorage implements PhotoStorage {
 	}
 
 	@Override
-	public void saveTemporaryPhoto(MultipartFile[] files) {
-		// TODO Auto-generated method stub
+	public String saveTemporaryPhoto(MultipartFile[] files) {
+		String uniquePhotoName = null;
 
+		if (files != null && files.length > 0) {
+			MultipartFile file = files[0];
+			uniquePhotoName = generateUniqueFileName(file.getOriginalFilename());
+
+			File to = new File(this.tempLocal.toAbsolutePath() + FileSystems.getDefault().getSeparator() + uniquePhotoName);
+			try {
+				file.transferTo(to);
+			} catch (IOException e) {
+				throw new RuntimeException("Error when trying to save the photo in the temporary local");
+			}
+		}
+
+		return uniquePhotoName;
+	}
+
+	private String generateUniqueFileName(String originalName) {
+		String uniquePhotoName = UUID.randomUUID() + "_" + originalName;
+
+		if (logger.isDebugEnabled()) {
+			logger.debug(String.format("Original name: %s", originalName));
+			logger.debug(String.format("Generated unique name: %s", uniquePhotoName));
+		}
+
+		return uniquePhotoName;
 	}
 
 }

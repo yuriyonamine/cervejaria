@@ -20,11 +20,10 @@ public class FotoStorageRunnable implements Runnable {
 
 	@Override
 	public void run() {
-		photoStorage.saveTemporaryPhoto(files);
-		String name = files[0].getOriginalFilename();
+		String uniquePhotoName = photoStorage.saveTemporaryPhoto(files);
 		String contentType = files[0].getContentType();
 
-		result.setResult(new PhotoDTO(name, contentType));
+		result.setResult(new PhotoDTO(uniquePhotoName, contentType));
 	}
 
 }

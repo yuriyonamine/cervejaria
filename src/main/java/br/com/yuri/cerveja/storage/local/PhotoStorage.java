@@ -3,5 +3,5 @@ package br.com.yuri.cerveja.storage.local;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface PhotoStorage {
-	public void saveTemporaryPhoto(MultipartFile[] files);
+	public String saveTemporaryPhoto(MultipartFile[] files);
 }
