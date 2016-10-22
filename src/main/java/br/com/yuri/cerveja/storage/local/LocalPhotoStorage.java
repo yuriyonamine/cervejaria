@@ -70,4 +70,13 @@ public class LocalPhotoStorage implements PhotoStorage {
 		return uniquePhotoName;
 	}
 
+	@Override
+	public byte[] getTemporaryPhoto(String name) {
+		try {
+			return Files.readAllBytes(this.tempLocal.resolve(name));
+		} catch (IOException e) {
+			throw new RuntimeException("Error reading the photo.");
+		}
+	}
+
 }
