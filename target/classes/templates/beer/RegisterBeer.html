@@ -115,10 +115,12 @@
 						
 						<label class="control-label">Photo</label>
 						
-						<div id="upload-drop" class="bw-upload">
-							<i class="glyphicon glyphicon-cloud-upload"></i>
-							<span>Drag the photo here</span>
-							<a class="bw-upload-form-file">Select <input id="upload-select" type="file" accept=".jpg,.jpeg,.png"/></a>
+						<div id="photoBeerContainer">
+							<div id="upload-drop" class="bw-upload">
+								<i class="glyphicon glyphicon-cloud-upload"></i>
+								<span>Drag the photo here</span>
+								<a class="bw-upload-form-file">Select <input id="upload-select" type="file" accept=".jpg,.jpeg,.png"/></a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -133,6 +135,8 @@
 			</form>
 		</div>
 		<div th:replace="style/FastRegisterBeerStyle :: modal"></div>
+		<th:block th:replace="beer/BeerPhoto"></th:block>
+		
 	</section>
 
 	<th:block layout:fragment="javascript-extra">
@@ -148,8 +152,27 @@
 						allow: '*.(jpg|jpeg|png)',
 						action: '/cervejaria/photos',
 						complete: function(response) {
-							$('#photoName').val(response.photoName)
-							$('#contentType').val(response.contentType);
+							var inputPhotoName = $('#photoName');
+							var inputContentType = $('#contentType');
+							var uploadDrop = $('#upload-drop');
+							
+							var htmTemplate = $('#beerPhotoScript').html();						
+							var template = Handlebars.compile(htmTemplate);
+							var htmlBeerPhoto = template({photoName: response.photoName});
+							var containerBeerPhoto = $('#photoBeerContainer'); 
+							
+							inputPhotoName.val(response.photoName);
+							inputContentType.val(response.contentType);
+							
+							uploadDrop.addClass('hidden');
+							containerBeerPhoto.append(htmlBeerPhoto);
+							
+							$('removePhotoButton').on('click', function(){
+								uploadDrop.removeClass('hidden');
+								inputPhotoName.val('');
+								inputContentType.val('');
+								$('beerPhotoScript').remove();	
+							});
 						}
 				};
 				
