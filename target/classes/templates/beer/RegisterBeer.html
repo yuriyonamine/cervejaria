@@ -5,8 +5,8 @@
 	layout:decorate="~{layout/DefaultLayout}"
 	xmlns:brewer="http://www.breweryuri.com.br">
 <head>
-	<title>Register Beer</title>
-	<link rel="stylesheet" th:href="@{/stylesheets/vendors/upload.min.css}"/>
+<title>Register Beer</title>
+<link rel="stylesheet" th:href="@{/stylesheets/vendors/upload.min.css}" />
 </head>
 <body>
 	<section class="aw-layout-content  js-content"
@@ -18,23 +18,25 @@
 		</div>
 
 		<div class="container-fluid">
-		
-		<form method="POST" th:object="${beer}" class="form-vertical  js-form-loading">
-			<brewer:message/>
+
+			<form method="POST" th:object="${beer}"
+				class="form-vertical  js-form-loading">
+				<brewer:message />
 				<div class="row">
 					<div class="col-sm-2 form-group" brewer:classforerror="sku">
-						<label for="sku" class="control-label">SKU</label> <input id="sku" type="text" th:field="*{sku}"
-							class="form-control"/>
+						<label for="sku" class="control-label">SKU</label> <input id="sku"
+							type="text" th:field="*{sku}" class="form-control" />
 					</div>
 					<div class="col-sm-10 form-group" brewer:classforerror="name">
-						<label for="name" class="control-label">Name</label> <input id="name" type="text" th:field="*{name}"
-							class="form-control"/>
+						<label for="name" class="control-label">Name</label> <input
+							id="name" type="text" th:field="*{name}" class="form-control" />
 					</div>
 				</div>
 
 				<div class="form-group" brewer:classforerror="description">
 					<label for="description" class="control-label">Description</label>
-					<textarea id="description" rows="3" class="form-control" th:field="*{description}"></textarea>
+					<textarea id="description" rows="3" class="form-control"
+						th:field="*{description}"></textarea>
 				</div>
 
 				<div class="row">
@@ -57,28 +59,33 @@
 					</div>
 
 					<div class="col-sm-3 form-group" brewer:classforerror="flavour">
-						<label for="flavour" class="control-label">Flavour</label>
-							<select id="flavour" class="form-control" th:field="*{flavour}">
-								<option value="">Select Flavour</option>
-								<option th:each="flavour : ${flavours}" th:value="${flavour}" th:text="${flavour.description}"></option>
+						<label for="flavour" class="control-label">Flavour</label> <select
+							id="flavour" class="form-control" th:field="*{flavour}">
+							<option value="">Select Flavour</option>
+							<option th:each="flavour : ${flavours}" th:value="${flavour}"
+								th:text="${flavour.description}"></option>
 						</select>
 					</div>
 
 					<div class="col-sm-3 form-group">
-						<label for="alcoholStrength" class="control-label">Alcohol Strength</label>
+						<label for="alcoholStrength" class="control-label">Alcohol
+							Strength</label>
 						<div class="input-group" brewer:classforerror="alcoholStrength">
-							<input id="alcoholStrength" type="text"	class="form-control js-decimal" th:field="*{alcoholStrength}"/>
+							<input id="alcoholStrength" type="text"
+								class="form-control js-decimal" th:field="*{alcoholStrength}" />
 							<div class="input-group-addon">%</div>
 						</div>
 					</div>
 
-					<div class="col-lg-3 col-sm-6 form-group"  brewer:classforerror="origin">
+					<div class="col-lg-3 col-sm-6 form-group"
+						brewer:classforerror="origin">
 						<label for="origin" class="control-label">Origin</label>
 						<div>
 							<th:block th:each="origin : ${origins}">
 								<div class="radio radio-inline">
-									<input type="radio" th:id="|id_${origin}|"  th:value="${origin}" th:field="*{origin}"> 
-									<label th:for="|id_${origin}|" th:text="${origin.description}"></label>
+									<input type="radio" th:id="|id_${origin}|" th:value="${origin}"
+										th:field="*{origin}"> <label th:for="|id_${origin}|"
+										th:text="${origin.description}"></label>
 								</div>
 							</th:block>
 						</div>
@@ -90,7 +97,8 @@
 						<label for="price" class="control-label">Price</label>
 						<div class="input-group" brewer:classforerror="price">
 							<div class="input-group-addon">R$</div>
-							<input id="price" type="text" class="form-control js-decimal" th:field="*{price}"/>
+							<input id="price" type="text" class="form-control js-decimal"
+								th:field="*{price}" />
 						</div>
 					</div>
 
@@ -98,28 +106,30 @@
 						<label for="comission" class="control-label">Comission</label>
 						<div class="input-group" brewer:classforerror="comission">
 							<div class="input-group-addon">R$</div>
-							<input id="comission" type="text" class="form-control js-decimal" th:field="*{comission}"/>
+							<input id="comission" type="text" class="form-control js-decimal"
+								th:field="*{comission}" />
 						</div>
 					</div>
 
-					<div class="col-sm-3 form-group" brewer:classforerror="stockQuantity">
-						<label for="stockQuantity" class="control-label">Stock Quantity</label> 
-						<input id="stockQuantity" type="text" class="form-control js-plain" th:field="*{stockQuantity}"/>
+					<div class="col-sm-3 form-group"
+						brewer:classforerror="stockQuantity">
+						<label for="stockQuantity" class="control-label">Stock
+							Quantity</label> <input id="stockQuantity" type="text"
+							class="form-control js-plain" th:field="*{stockQuantity}" />
 					</div>
 				</div>
-				
+
 				<div class="row">
 					<div class="cols-sm-12 form-group">
-						<input type="hidden" id="photoName" th:field="*{photoName}"/>
-						<input type="hidden" id="contentType" th:field="*{contentType}"/>
-						
-						<label class="control-label">Photo</label>
-						
-						<div id="photoBeerContainer">
+						<input type="hidden" id="photoName" th:field="*{photoName}" /> <input
+							type="hidden" id="contentType" th:field="*{contentType}" /> <label
+							class="control-label">Photo</label>
+
+						<div id="photoBeerContainer" th:attr="data-url-photos=@{/photos}">
 							<div id="upload-drop" class="bw-upload">
-								<i class="glyphicon glyphicon-cloud-upload"></i>
-								<span>Drag the photo here</span>
-								<a class="bw-upload-form-file">Select <input id="upload-select" type="file" accept=".jpg,.jpeg,.png"/></a>
+								<i class="glyphicon glyphicon-cloud-upload"></i> <span>Drag
+									the photo here</span> <a class="bw-upload-form-file">Select <input
+									id="upload-select" type="file" accept=".jpg,.jpeg,.png" /></a>
 							</div>
 						</div>
 					</div>
@@ -136,7 +146,7 @@
 		</div>
 		<div th:replace="style/FastRegisterBeerStyle :: modal"></div>
 		<th:block th:replace="beer/BeerPhoto"></th:block>
-		
+
 	</section>
 
 	<th:block layout:fragment="javascript-extra">
@@ -144,42 +154,7 @@
 		<script th:src="@{/javascripts/vendors/uikit.min.js}"></script>
 		<script th:src="@{/javascripts/vendors/upload.min.js}"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
-		<script>
-			$(function(){
-				var settings = {
-						type: 'json',
-						filelimit: 1,
-						allow: '*.(jpg|jpeg|png)',
-						action: '/cervejaria/photos',
-						complete: function(response) {
-							var inputPhotoName = $('#photoName');
-							var inputContentType = $('#contentType');
-							var uploadDrop = $('#upload-drop');
-							
-							var htmTemplate = $('#beerPhotoScript').html();						
-							var template = Handlebars.compile(htmTemplate);
-							var htmlBeerPhoto = template({photoName: response.photoName});
-							var containerBeerPhoto = $('#photoBeerContainer'); 
-							
-							inputPhotoName.val(response.photoName);
-							inputContentType.val(response.contentType);
-							
-							uploadDrop.addClass('hidden');
-							containerBeerPhoto.append(htmlBeerPhoto);
-							
-							$('removePhotoButton').on('click', function(){
-								uploadDrop.removeClass('hidden');
-								inputPhotoName.val('');
-								inputContentType.val('');
-								$('beerPhotoScript').remove();	
-							});
-						}
-				};
-				
-				UIkit.uploadSelect($('#upload-select'), settings);
-				UIkit.uploadDrop($('#upload-drop'),settings);
-			});
-		</script>
+		<script th:src="@{/javascripts/beer.upload-photo.js}"></script>
 	</th:block>
 </body>
 </html>

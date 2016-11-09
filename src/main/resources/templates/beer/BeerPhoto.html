@@ -1,11 +1,11 @@
-<script id=beerPhotoScript type="text/x-handlebars-template">
+<script id="beerPhotoScript" type="text/x-handlebars-template">
 	<div id="beerPhoto" class="row">
 		<div class="col-md-4"></div>
 		<div class="col-md-4 text-center">
 			<a href="#" class="thumbnail">
 				<img th:src="@{/photos/temp/{{photoName}}}"></img>
 			</a>
-			<button type="removePhotoButton" class="btn  btn-link"><span class="glyphicon  glyphicon-remove"></span></button>
+			<button type="button" id="removePhotoButton" class="btn  btn-link"><span class="glyphicon  glyphicon-remove"></span></button>
 		</div>
 		<div class="col-md-4"></div>	 
 	</div>
