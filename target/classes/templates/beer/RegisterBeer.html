@@ -121,9 +121,9 @@
 
 				<div class="row">
 					<div class="cols-sm-12 form-group">
-						<input type="hidden" id="photoName" th:field="*{photoName}" /> <input
-							type="hidden" id="contentType" th:field="*{contentType}" /> <label
-							class="control-label">Photo</label>
+						<input type="hidden" id="photoName" th:field="*{photoName}">
+						<input type="hidden" id="contentType" th:field="*{contentType}">
+						<label class="control-label">Photo</label>
 
 						<div id="photoBeerContainer" th:attr="data-url-photos=@{/photos}">
 							<div id="upload-drop" class="bw-upload">
@@ -153,7 +153,8 @@
 		<script th:src="@{/javascripts/style.fast-register.js}"></script>
 		<script th:src="@{/javascripts/vendors/uikit.min.js}"></script>
 		<script th:src="@{/javascripts/vendors/upload.min.js}"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 		<script th:src="@{/javascripts/beer.upload-photo.js}"></script>
 	</th:block>
 </body>
